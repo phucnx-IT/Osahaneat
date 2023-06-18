@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+import java.util.Set;
+
+@Entity(name="users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,4 +26,11 @@ public class Users {
     @ManyToOne()
     @JoinColumn(name = "role_id")
     private Roles role;
+    @OneToMany(mappedBy = "user")
+    private Set<RatingFood> ratingFoods;
+    @OneToMany(mappedBy = "user")
+    private Set<RatingRestaurant> ratingRestaurants;
+    @OneToMany(mappedBy = "user")
+    private Set<Orders> orders;
+
 }
