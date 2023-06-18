@@ -1,4 +1,4 @@
-package com.cybersoft.demosrpingboot.model;
+package com.cybersoft.demosrpingboot.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Entity(name = "users")
-@Table(name = "users")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,18 +16,12 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
-    private String fullName;
-    private int age;
+
     private String username;
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
+    @Column(name = "full_name")
+    private String fullName;
+    @ManyToOne()
+    @JoinColumn(name = "role_id")
     private Roles role;
-
-    @OneToOne(mappedBy = "user")
-    private UserDetails userDetails;
-
-    @OneToMany(mappedBy = "user")
-    private List<Task> tasks;
 }

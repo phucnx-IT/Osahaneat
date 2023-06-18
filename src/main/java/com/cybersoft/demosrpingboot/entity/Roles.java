@@ -1,4 +1,4 @@
-package com.cybersoft.demosrpingboot.model;
+package com.cybersoft.demosrpingboot.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,8 +8,6 @@ import lombok.Setter;
 
 import java.util.Set;
 
-
-@Table(name = "roles")
 @Entity(name = "roles")
 @Getter
 @Setter
@@ -22,8 +20,6 @@ public class Roles {
     private int id;
     @Column(name = "role_name")
     private String roleName;
-    @Column(name = "description")
-    private String desc;
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private Set<Users> users;
+    @OneToMany(mappedBy = "role")
+    private Set<Users> user;
 }
