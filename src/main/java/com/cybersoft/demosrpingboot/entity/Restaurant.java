@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class Restaurant {
     private boolean isFreeship;
     private String address;
     @Column(name = "open_date")
-    private Date openDate;
+    private LocalDateTime openDate;
     @OneToMany(mappedBy = "restaurant")
     private Set<RatingRestaurant> ratingRestaurants;
     @OneToMany(mappedBy = "restaurant")
