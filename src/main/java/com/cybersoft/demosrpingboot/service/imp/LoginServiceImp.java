@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 
 
 public interface LoginServiceImp {
-    UserDto checkLogin(String username, String password);
+    UserDto checkLogin(String email, String password);
     Boolean checkSignup(PayloadRequest payloadRequest);
 }

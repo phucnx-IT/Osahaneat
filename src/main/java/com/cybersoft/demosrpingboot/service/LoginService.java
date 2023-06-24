@@ -7,6 +7,7 @@ import com.cybersoft.demosrpingboot.payload.PayloadRequest;
 import com.cybersoft.demosrpingboot.repository.UserRepository;
 import com.cybersoft.demosrpingboot.service.imp.LoginServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,11 +17,13 @@ public class LoginService implements LoginServiceImp {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDto checkLogin(String username, String password) {
-        Optional<Users> user = Optional.ofNullable(userRepository.findUsersByUsernameAndPassword(username, password));
-        if (user.isPresent()){
+    public UserDto checkLogin(String email, String password) {
+        Optional<Users> user = Optional.ofNullable(userRepository.findByEmail(email));
+        if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())){
             return UserMapper.INSTANCE.userToUserDTO(user.get());
         }
         return null;
