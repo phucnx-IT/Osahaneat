@@ -28,7 +28,7 @@ public class Restaurant {
     private boolean isFreeship;
     private String address;
     @Column(name = "open_date")
-    private LocalDateTime openDate;
+    private Date openDate;
     @OneToMany(mappedBy = "restaurant")
     private Set<RatingRestaurant> ratingRestaurants;
     @OneToMany(mappedBy = "restaurant")

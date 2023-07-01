@@ -19,9 +19,11 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    private String text;
+    private String images;
     @Column(name = "time_ship")
-    private Date timeShip;
+    private String timeShip;
+    @Column(name = "is_freeship")
+    private boolean isFreeship;
     private float price;
     @ManyToOne
     @JoinColumn(name = "category_id")

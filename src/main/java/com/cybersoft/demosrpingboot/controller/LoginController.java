@@ -4,8 +4,7 @@ import com.cybersoft.demosrpingboot.common.helper.ResponseHelper;
 import com.cybersoft.demosrpingboot.dto.UserDto;
 import com.cybersoft.demosrpingboot.payload.PayloadRequest;
 import com.cybersoft.demosrpingboot.service.imp.LoginServiceImp;
-import com.cybersoft.demosrpingboot.ultilities.JwtUltilites;
-import io.jsonwebtoken.Jwts;
+import com.cybersoft.demosrpingboot.common.configure.jwt.JwtUltilites;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.crypto.SecretKey;
 import java.util.Objects;
 @CrossOrigin("http://127.0.0.1:5500")
 @RestController()
