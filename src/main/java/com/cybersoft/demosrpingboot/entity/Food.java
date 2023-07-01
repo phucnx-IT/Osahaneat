@@ -23,7 +23,7 @@ public class Food {
     private boolean isFreeship;
     private float price;
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "categoryid")
     private Category category;
     @OneToMany(mappedBy = "food")
     private Set<RatingFood> ratingFoods;

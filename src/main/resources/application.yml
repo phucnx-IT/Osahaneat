@@ -13,8 +13,6 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
-jwt:
-  privateKey: 2ihSuZxNGUXkfCCApyLK7pqc0JARuHEQjWB6beDPok5Ks0jfAoSQZx3q4HmtsCozjqQjC9/CCluk0wu+xltqQA==
   expiration: 36000000
 fileUpload:
   rootPath: E:\BaiTap\JAVA BACK_END\uploads
