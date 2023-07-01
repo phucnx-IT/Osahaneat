@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "food")
@@ -20,9 +19,7 @@ public class Food {
     private int id;
     private String title;
     private String images;
-    @Column(name = "time_ship")
     private String timeShip;
-    @Column(name = "is_freeship")
     private boolean isFreeship;
     private float price;
     @ManyToOne

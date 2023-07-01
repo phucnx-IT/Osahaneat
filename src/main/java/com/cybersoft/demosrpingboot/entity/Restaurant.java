@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,14 +19,11 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    @Column(name = "sub_title")
     private String subTile;
     private String description;
     private String image;
-    @Column(name = "is_freeship")
     private boolean isFreeship;
     private String address;
-    @Column(name = "open_date")
     private Date openDate;
     @OneToMany(mappedBy = "restaurant")
     private Set<RatingRestaurant> ratingRestaurants;
