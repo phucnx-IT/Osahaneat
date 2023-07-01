@@ -44,7 +44,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(httpSecuritySession -> httpSecuritySession.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->authorize
-                .requestMatchers("/login/**","/restaurant/getfile/**").permitAll()
+                .requestMatchers("/login/**",
+                        "/restaurant/getfile/**",
+                        "/restaurant/getall",
+                        "/category/getfile/**",
+                        "/category/getmenucategory/**").permitAll()
                 .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

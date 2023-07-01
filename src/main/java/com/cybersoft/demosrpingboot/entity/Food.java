@@ -20,7 +20,8 @@ public class Food {
     private String title;
     private String images;
     private String timeShip;
-    private boolean isFreeship;
+    private boolean isFreeShip;
+    private String description;
     private float price;
     @ManyToOne
     @JoinColumn(name = "category_id")

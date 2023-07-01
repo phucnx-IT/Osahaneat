@@ -19,10 +19,10 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    private String subTile;
+    private String subTitle;
     private String description;
     private String image;
-    private boolean isFreeship;
+    private Boolean isFreeShip;
     private String address;
     private Date openDate;
     @OneToMany(mappedBy = "restaurant")
