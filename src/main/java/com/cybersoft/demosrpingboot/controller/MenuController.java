@@ -20,10 +20,10 @@ public class MenuController {
                                                   @RequestParam String title,
                                                   @RequestParam String timeShip,
                                                   @RequestParam float price,
-                                                  @RequestParam boolean isFreeship,
+                                                  @RequestParam boolean isFreeShip,
                                                   @RequestParam int categoryId
     ){
-        if (menuServiceImp.uploadMenu(uploadFile,title,timeShip,price,isFreeship,categoryId)) {
+        if (menuServiceImp.uploadMenu(uploadFile,title,timeShip,price,isFreeShip,categoryId)) {
             return ResponseHelper.getResponse("Uploaded", HttpStatus.OK);
         }
         return ResponseHelper.getError("Can not upload restaurant", HttpStatus.BAD_REQUEST);

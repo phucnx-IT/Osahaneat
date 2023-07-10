@@ -15,6 +15,7 @@ import com.cybersoft.demosrpingboot.service.imp.FileServiceImp;
 import com.cybersoft.demosrpingboot.service.imp.RestaurantImp;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,7 +45,7 @@ public class RestaurantService implements RestaurantImp {
     @Autowired
     RedisTemplate<String, String> redisTemplate;
 
-    private final Logger logger = (Logger) LoggerFactory.getLogger(RestaurantService.class);
+    private final Logger logger = LoggerFactory.getLogger(RestaurantService.class);
     @Override
     public Boolean uploadRestaurant(MultipartFile uploadFile, String title, String subTile, String description,
                                            Boolean isFreeShip, String address, Date openDate) {
@@ -62,7 +62,7 @@ public class RestaurantService implements RestaurantImp {
             restaurantRepository.save(restaurant);
             return true;
         } catch (Exception e) {
-            logger.warning(e.getMessage());
+            logger.warn(e.getMessage());
         }
         return false;
     }
