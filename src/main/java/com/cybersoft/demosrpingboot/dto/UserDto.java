@@ -1,11 +1,9 @@
 package com.cybersoft.demosrpingboot.dto;
 
-import com.cybersoft.demosrpingboot.entity.Roles;
 import com.cybersoft.demosrpingboot.payload.RegisterRole;
 import lombok.*;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor

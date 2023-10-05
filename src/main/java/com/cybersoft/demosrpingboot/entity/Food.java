@@ -2,7 +2,6 @@ package com.cybersoft.demosrpingboot.entity;
 
 import com.cybersoft.demosrpingboot.common.model.BaseEntity;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

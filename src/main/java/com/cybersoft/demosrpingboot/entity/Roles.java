@@ -9,7 +9,6 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Entity(name = "roles")
 @Getter

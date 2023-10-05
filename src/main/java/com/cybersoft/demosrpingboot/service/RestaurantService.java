@@ -1,19 +1,16 @@
 package com.cybersoft.demosrpingboot.service;
 
-import com.cybersoft.demosrpingboot.dto.CategoryDto;
 import com.cybersoft.demosrpingboot.dto.MenuDto;
 import com.cybersoft.demosrpingboot.dto.RestaurantDto;
 import com.cybersoft.demosrpingboot.entity.Category;
 import com.cybersoft.demosrpingboot.entity.RatingRestaurant;
 import com.cybersoft.demosrpingboot.entity.Restaurant;
-import com.cybersoft.demosrpingboot.mapping.CategoryMapper;
 import com.cybersoft.demosrpingboot.mapping.FoodMapper;
 import com.cybersoft.demosrpingboot.mapping.RestaurantMapper;
 import com.cybersoft.demosrpingboot.repository.RestaurantRepository;
 import com.cybersoft.demosrpingboot.service.imp.FileServiceImp;
 import com.cybersoft.demosrpingboot.service.imp.RestaurantImp;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +18,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
