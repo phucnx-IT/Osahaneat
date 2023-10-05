@@ -4,7 +4,6 @@ import com.cybersoft.demosrpingboot.dto.CategoryDto;
 import com.cybersoft.demosrpingboot.dto.MenuDto;
 import com.cybersoft.demosrpingboot.dto.RestaurantDto;
 import com.cybersoft.demosrpingboot.entity.Category;
-import com.cybersoft.demosrpingboot.entity.MenuRestaurant;
 import com.cybersoft.demosrpingboot.entity.RatingRestaurant;
 import com.cybersoft.demosrpingboot.entity.Restaurant;
 import com.cybersoft.demosrpingboot.mapping.CategoryMapper;
@@ -30,7 +29,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-
 public class RestaurantService implements RestaurantImp {
 
     @Autowired
@@ -70,8 +68,8 @@ public class RestaurantService implements RestaurantImp {
     @Override
     public List<RestaurantDto> getAllRestaurants() {
         List<RestaurantDto> restaurantDtos = new ArrayList<>();
-        String dataRedis = redisTemplate.opsForValue().get("restaurant");
-        if (!StringUtils.hasText(dataRedis)) {
+//        String dataRedis = redisTemplate.opsForValue().get("restaurant");
+//        if (!StringUtils.hasText(dataRedis)) {
             PageRequest pageRequest = PageRequest.of(0, 6);
             Page<Restaurant> restaurantPage = restaurantRepository.findAll(pageRequest);
             for (Restaurant res : restaurantPage
@@ -80,36 +78,36 @@ public class RestaurantService implements RestaurantImp {
                 restaurantDto.setRating(calculateRating(res.getRatingRestaurants()));
                 restaurantDtos.add(restaurantDto);
             }
-            String dataJson = gson.toJson(restaurantDtos);
-            redisTemplate.opsForValue().set("restaurant", dataJson);
-        } else {
-            Type listType = new TypeToken<List<RestaurantDto>>(){}.getType();
-            restaurantDtos = gson.fromJson(dataRedis,listType);
-        }
+//            String dataJson = gson.toJson(restaurantDtos);
+//            redisTemplate.opsForValue().set("restaurant", dataJson);
+//        } else {
+//            Type listType = new TypeToken<List<RestaurantDto>>(){}.getType();
+//            restaurantDtos = gson.fromJson(dataRedis,listType);
+//        }
         return restaurantDtos;
     }
 
-    @Override
+//    @Override
     public RestaurantDto getDetailRestaurant(int id) {
-        Optional<Restaurant> restaurant = restaurantRepository.findById(id);
-        if (restaurant.isPresent()) {
-            RestaurantDto restaurantDto = RestaurantMapper.INSTANCE.restaurantToRestaurantDto(restaurant.get());
-            restaurantDto.setRating(calculateRating(restaurant.get().getRatingRestaurants()));
-            restaurantDto.setCategoryDtos(getCategoryFromRestaurant(restaurant.get().getMenuRestaurants()));
-            return restaurantDto;
-        }
+//        Optional<Restaurant> restaurant = restaurantRepository.findById(id);
+//        if (restaurant.isPresent()) {
+//            RestaurantDto restaurantDto = RestaurantMapper.INSTANCE.restaurantToRestaurantDto(restaurant.get());
+//            restaurantDto.setRating(calculateRating(restaurant.get().getRatingRestaurants()));
+//            restaurantDto.setCategoryDtos(getCategoryFromRestaurant(restaurant.get().getMenuRestaurants()));
+//            return restaurantDto;
+//        }
         return null;
     }
 
-    private List<CategoryDto> getCategoryFromRestaurant(Set<MenuRestaurant> menuRestaurants) {
-        List<CategoryDto> categoryDtoList = new ArrayList<>();
-        menuRestaurants.forEach(menuRestaurant -> {
-            CategoryDto categoryDto = CategoryMapper.INSTANCE.categoryToCategoryDto(menuRestaurant.getCategory());
-            categoryDto.setMenus(getMenuInCategory(menuRestaurant.getCategory()));
-            categoryDtoList.add(categoryDto);
-        });
-        return categoryDtoList;
-    }
+//    private List<CategoryDto> getCategoryFromRestaurant(Set<MenuRestaurant> menuRestaurants) {
+//        List<CategoryDto> categoryDtoList = new ArrayList<>();
+//        menuRestaurants.forEach(menuRestaurant -> {
+//            CategoryDto categoryDto = CategoryMapper.INSTANCE.categoryToCategoryDto(menuRestaurant.getCategory());
+//            categoryDto.setMenus(getMenuInCategory(menuRestaurant.getCategory()));
+//            categoryDtoList.add(categoryDto);
+//        });
+//        return categoryDtoList;
+//    }
 
     private List<MenuDto> getMenuInCategory(Category category) {
         return category.getFoods().stream().map(FoodMapper.INSTANCE::foodToMenuDto).collect(Collectors.toList());

@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderRequest {
     private int restaurantId;
-    private int userId;
+    private String userId;
     private int[] foodId;
 }

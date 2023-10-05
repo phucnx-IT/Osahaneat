@@ -1,10 +1,13 @@
 package com.cybersoft.demosrpingboot.entity;
 
+import com.cybersoft.demosrpingboot.common.model.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
 
@@ -13,10 +16,9 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Food {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@SuperBuilder
+public class Food extends BaseEntity {
+
     private String title;
     private String images;
     private String timeShip;
@@ -28,7 +30,7 @@ public class Food {
     private Category category;
     @OneToMany(mappedBy = "food")
     private Set<RatingFood> ratingFoods;
-    @OneToMany(mappedBy = "food")
-    private Set<OrderItem> orderItems;
+    @ManyToMany(mappedBy = "foods")
+    private Set<Orders> orders;
 
 }

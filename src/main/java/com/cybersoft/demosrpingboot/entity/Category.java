@@ -1,10 +1,12 @@
 package com.cybersoft.demosrpingboot.entity;
 
+import com.cybersoft.demosrpingboot.common.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
 
@@ -13,15 +15,16 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@SuperBuilder
+public class Category extends BaseEntity {
     @Column(name = "name_cate")
     private String nameCate;
     @OneToMany(mappedBy = "category")
     private Set<Food> foods;
-    @OneToMany(mappedBy = "category")
-    private Set<MenuRestaurant> menuRestaurants;
+    @ManyToMany
+    @JoinTable(name = "restaurant_category",
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "restaurant_id"))
+    private Set<Restaurant> restaurants;
 
 }

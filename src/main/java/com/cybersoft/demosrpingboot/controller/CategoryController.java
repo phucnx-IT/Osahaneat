@@ -28,7 +28,7 @@ public class CategoryController {
         if (!categoryDtoList.isEmpty()) {
             return ResponseHelper.getResponse(categoryDtoList, HttpStatus.OK);
         }
-        return ResponseHelper.getResponse("Empty list", HttpStatus.NO_CONTENT);
+        return ResponseHelper.getResponse("Empty list", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/getfile/{filename:.*}")

@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Builder
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestaurantDto {
-    private int id;
+    private UUID id;
     private String title;
     private String subTitle;
     private String image;

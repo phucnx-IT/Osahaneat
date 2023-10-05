@@ -1,17 +1,21 @@
 package com.cybersoft.demosrpingboot.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.cybersoft.demosrpingboot.entity.Roles;
+import com.cybersoft.demosrpingboot.payload.RegisterRole;
+import lombok.*;
 
-@Getter
-@Setter
+import java.util.Set;
+import java.util.UUID;
+
+@Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 public class UserDto {
-    private int id;
-    private String username;
+    private String email;
     private String password;
-    private String fullName;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private Set<RegisterRole> roles;
 }

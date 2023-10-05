@@ -1,20 +1,21 @@
 package com.cybersoft.demosrpingboot.entity;
 
+import com.cybersoft.demosrpingboot.common.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Entity(name="rating_restaurant")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RatingRestaurant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@SuperBuilder
+public class RatingRestaurant extends BaseEntity {
+
     private String content;
     @Column(name = "rate_point")
     private byte ratePoint;
