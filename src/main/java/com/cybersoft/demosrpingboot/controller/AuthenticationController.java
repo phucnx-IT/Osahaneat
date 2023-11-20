@@ -4,14 +4,13 @@ import com.cybersoft.demosrpingboot.common.helper.ResponseHelper;
 import com.cybersoft.demosrpingboot.dto.UserDto;
 import com.cybersoft.demosrpingboot.payload.AuthenticationRequest;
 import com.cybersoft.demosrpingboot.payload.RegisterRequest;
-import com.cybersoft.demosrpingboot.repository.UserRepository;
 import com.cybersoft.demosrpingboot.service.AuthenticationService;
-import com.cybersoft.demosrpingboot.service.UserService;
 import com.cybersoft.demosrpingboot.service.imp.UserServiceImp;
 import io.jsonwebtoken.lang.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -41,4 +40,20 @@ public class AuthenticationController {
         }
         return ResponseHelper.getError("Missing role or username", HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/hello")
+    public ResponseEntity<?> getHello(){
+        return ResponseHelper.getResponse("Hello", HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin")
+    public ResponseEntity<?> getAdmin(){
+        return ResponseHelper.getResponse("Admin", HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/user")
+    public ResponseEntity<?> getUser(){
+        return ResponseHelper.getResponse("User", HttpStatus.OK);
+    }
+
 }

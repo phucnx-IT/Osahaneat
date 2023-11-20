@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.collection.spi.PersistentSet;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,8 +33,8 @@ public class Users extends BaseEntity implements UserDetails {
     @Column(name = "full_name")
     private String fullName;
     @JsonIgnore
-    @ManyToMany(mappedBy = "users")
-    private Set<Roles> roles;
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Roles> roles = new PersistentSet<>();
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<RatingFood> ratingFoods;
