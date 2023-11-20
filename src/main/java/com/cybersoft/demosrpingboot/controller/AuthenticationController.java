@@ -4,22 +4,13 @@ import com.cybersoft.demosrpingboot.common.helper.ResponseHelper;
 import com.cybersoft.demosrpingboot.dto.UserDto;
 import com.cybersoft.demosrpingboot.payload.AuthenticationRequest;
 import com.cybersoft.demosrpingboot.payload.RegisterRequest;
-import com.cybersoft.demosrpingboot.repository.UserRepository;
 import com.cybersoft.demosrpingboot.service.AuthenticationService;
-import com.cybersoft.demosrpingboot.service.UserService;
 import com.cybersoft.demosrpingboot.service.imp.UserServiceImp;
 import io.jsonwebtoken.lang.Strings;
-<<<<<<< HEAD
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-=======
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
->>>>>>> origin/master
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -49,8 +40,6 @@ public class AuthenticationController {
         }
         return ResponseHelper.getError("Missing role or username", HttpStatus.BAD_REQUEST);
     }
-<<<<<<< HEAD
-
 
     @GetMapping("/hello")
     public ResponseEntity<?> getHello(){
@@ -66,6 +55,5 @@ public class AuthenticationController {
     public ResponseEntity<?> getUser(){
         return ResponseHelper.getResponse("User", HttpStatus.OK);
     }
-=======
->>>>>>> origin/master
+
 }
